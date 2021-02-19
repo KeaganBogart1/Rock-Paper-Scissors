@@ -1,0 +1,139 @@
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<iomanip>
+using namespace std;
+int main()
+{
+int user, computer;
+char again = 'i';
+const int Max_round = 7;//max amount of rounds allotted for a game
+do { //start of do while loop,
+int Userwin = 0,
+CompWin = 0,
+round = 0;
+cout << "\n1 for rock, 2 for paper, 3 for scissors";//Instructions for user
+for (int round = 0; round < Max_round; round++)
+{
+unsigned seed = time(0);
+srand(seed);
+computer = rand() % 3 + 1;
+if (CompWin == 4)//Causes game to be over because computer won 4 games
+{
+break;
+}
+cout << "\nRound: " << (round + 1) << endl; //first round
+cout << "Your move: ";
+cin >> user;
+//computer pulls a random number either 1, 2, or 3
+if (Userwin == 3 && (computer == 1 && user == 2)
+)//causes user to lose because user won 3 games
+{
+CompWin++;
+cout << "Computer's move: 3" << endl;
+cout << "Scissors beats Paper" << endl;
+cout << "YOU LOSE!" << endl;
+cout << "Your score: " << Userwin << endl;
+cout << "Computer's score: " << CompWin << endl;
+}
+else if (Userwin == 3 && (computer == 3 && user == 1)
+)//causes user to lose because user won 3 games
+{
+CompWin++;
+cout << "Computer's move: 2" << endl;
+cout << "Paper beats Rock" << endl;
+cout << "YOU LOSE!" << endl;
+cout << "Your score: " << Userwin << endl;
+cout << "Computer's score: " << CompWin << endl;
+}
+else if (Userwin == 3 && (computer == 2 && user == 3)
+)//causes user to lose because user won 3 games
+{
+CompWin++;
+cout << "Computer's move: 3" << endl;
+cout << "Paper beats Rock" << endl;
+cout << "YOU LOSE!" << endl;
+cout << "Your score: " << Userwin << endl;
+cout << "Computer's score: " << CompWin << endl;
+}
+else if (computer == 1 && user == 2)//Rock vs paper, user wins
+{
+Userwin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Paper beats Rock" << endl
+<< "YOU WON!" << endl
+<< "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == 3 && user == 1)//Scissors vs Rock, user wins
+{
+Userwin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Rock beats Scissors" << endl
+<< "YOU WON!" << endl
+<< "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == 2 && user == 3)//Paper vs Scissors, user wins
+{
+Userwin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Scissors beats Paper" << endl
+<< "YOU WON!" << endl
+<< "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == 3 && user == 2)//Scissors vs Paper, computer wins
+{
+CompWin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Scissors beats Paper " << endl
+<< "YOU LOSE!" << endl << "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == 2 && user == 1)//Paper vs Rock, computer wins
+{
+CompWin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Paper beats Rock" << endl
+<< "YOU LOSE!" << endl << "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == 1 && user == 3)//Rock vs Scissors, computer wins
+{
+CompWin++;
+cout << "Computer's move: " << computer << endl;
+cout << "Rock beats Scissors" << endl
+<< "YOU LOSE!" << endl << "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else if (computer == user)//computer and user tie, does not count
+{
+round--;
+cout << "Computer's move: " << computer << endl;
+cout << "We TIED!" << endl
+<< "Your score: " << Userwin << endl
+<< "Computer's score: " << CompWin << endl;
+}
+else//user chose an invalid choice
+{
+round--;
+cout << "Invalid input, please try again with either 1, 2, or 3." << endl;
+}
+}
+cout << "!
+!
+! GAME OVER !
+!
+!" << endl;
+cout << "I WIN!" << endl;
+cout << "YOU LOSE! Ha Ha!" << endl;
+cout << "Want to try again? (Y/N) ";
+cin >> again;
+} while (again == 'Y' |
+| again == 'y'
+);
+cout << "Bye!" << endl;
+return 0;
+}
